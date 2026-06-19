@@ -1,10 +1,10 @@
 // script.js
 const versions = {
-  'v1.0': { name: 'Client v1.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/raw/refs/heads/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v1.0.exe' },
-  'v2.0': { name: 'Client v2.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/raw/refs/heads/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v2.0.exe' },
-  'v3.0': { name: 'Client v3.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/raw/refs/heads/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v3.0.exe' },
-  'v4.0': { name: 'Client v4.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/raw/refs/heads/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v4.0.exe' },
-  'v5.0': { name: 'Client v5.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/raw/refs/heads/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v5.0.exe' }
+  'v1.0': { name: 'Client v1.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v1.0.exe' },
+  'v2.0': { name: 'Client v2.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v2.0.exe' },
+  'v3.0': { name: 'Client v3.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v3.0.exe' },
+  'v4.0': { name: 'Client v4.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v4.0.exe' },
+  'v5.0': { name: 'Client v5.0', url: 'https://raw.githubusercontent.com/sourcerfree/sourcerfreeclient/main/SourcerFree.exe', filename: 'SourcerFreeInstaller-v5.0.exe' }
 };
 
 document.addEventListener('DOMContentLoaded',()=>{
