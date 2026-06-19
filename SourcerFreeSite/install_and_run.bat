@@ -1,27 +1,27 @@
 @echo off
-setlocal EnableDelayedExpansion
+setlocal
 
-title SourcerFree
+title SourcerFree Debug
 
 cd /d "%~dp0"
 
 echo ==================================
-echo      SourcerFree Client
+echo       SourcerFree Client
 echo ==================================
+echo.
 
-:: Verifica Python
-python --version >nul 2>&1
+echo [1/6] Instalando....
+
+where python >nul 2>&1
 
 if %errorlevel% neq 0 (
-
     echo Python nao encontrado.
-    echo Baixando Python...
+    echo Baixando...
 
-    curl -L -o python-installer.exe ^
-    https://www.python.org/ftp/python/3.13.5/python-3.13.5-amd64.exe
+    curl -L -o python-installer.exe https://www.python.org/ftp/python/3.13.5/python-3.13.5-amd64.exe
 
     if not exist python-installer.exe (
-        echo Falha ao baixar Python.
+        echo ERRO: Nao conseguiu baixar Python.
         pause
         exit /b 1
     )
@@ -32,52 +32,72 @@ if %errorlevel% neq 0 (
     /quiet ^
     InstallAllUsers=1 ^
     PrependPath=1 ^
-    Include_pip=1 ^
-    Include_launcher=1
+    Include_pip=1
 
     del python-installer.exe
 
+    echo.
     echo Python instalado.
-    
-    :: Atualiza PATH nessa sessao
-    set "PATH=%PATH%;C:\Program Files\Python313;C:\Program Files\Python313\Scripts"
-
+    echo Feche e abra esse arquivo novamente.
+    pause
+    exit /b
 )
 
+echo Python OK:
+python --version
+
+
 echo.
-echo Criando ambiente virtual...
+echo [2/6] Criando ambiente virtual...
 
 if not exist venv (
     python -m venv venv
+
+    if %errorlevel% neq 0 (
+        echo ERRO criando venv.
+        pause
+        exit /b 1
+    )
 )
 
-echo Ativando ambiente...
-
-call venv\Scripts\activate
+echo Venv OK
 
 
-echo Atualizando...
+echo.
+echo [3/6] Ativando ambiente...
+
+call venv\Scripts\activate.bat
+
+
+echo.
+echo [4/6] Atualizando pip...
 
 python -m pip install --upgrade pip
 
 
-echo Instalando dependencias...
+echo.
+echo [5/6] Instalando dependencias...
 
 if exist requirements.txt (
     pip install -r requirements.txt
 ) else (
-    echo requirements.txt nao encontrado!
+    echo ERRO: requirements.txt nao existe.
     pause
     exit /b 1
 )
 
 
 echo.
-echo Iniciando programa...
+echo [6/6] Rodando programa...
+echo.
 
-python teste.py
+python teste.py > log.txt 2>&1
 
 
 echo.
-echo Programa finalizado.
+echo ==================================
+echo Programa terminou.
+echo Verifique o arquivo log.txt
+echo ==================================
+
 pause
